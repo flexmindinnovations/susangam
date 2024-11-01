@@ -17,7 +17,6 @@ export type ApiConfigType = {
   }
 };
 
-// Create the context
 const ApiConfigContext = createContext<ApiConfigType | null>(null);
 
 export const ApiConfigProvider = ({ children }: { children: React.ReactNode }) => {
