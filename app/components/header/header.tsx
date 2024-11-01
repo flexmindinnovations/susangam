@@ -228,17 +228,17 @@ const HeaderComponent = () => {
                       Profile
                     </p>
                   </DropdownItem>
-                  <DropdownItem key="publicProfile" href="/public-profile" startContent={<Binoculars size={18} />}>
+                  <DropdownItem key="publicProfile" href="/publicProfile" startContent={<Binoculars size={18} />}>
                     <p className="text-base">
                       Public Profile
                     </p>
                   </DropdownItem>
-                  <DropdownItem key="favouriteProfile" href="/favourite-profile" startContent={<BookHeart size={18} />}>
+                  <DropdownItem key="favouriteProfile" href="/favouriteProfile" startContent={<BookHeart size={18} />}>
                     <p className="text-base">
                       Manage Favourite Profiles
                     </p>
                   </DropdownItem>
-                  <DropdownItem key="profilHistory" href="/profil-history" startContent={<FolderClock size={18} />}>
+                  <DropdownItem key="profileHistory" href="/profileHistory" startContent={<FolderClock size={18} />}>
                     <p className="text-base">
                       Profile View History
                     </p>
