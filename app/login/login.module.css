@@ -1,0 +1,67 @@
+/* Default Background Animation */
+@keyframes defaultBackground {
+  0% {
+    opacity: 0;
+    transform: scale(0.8) translateX(100px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateX(0);
+  }
+}
+
+/* Default Card Animation */
+@keyframes defaultCard {
+  0% {
+    transform: translateX(-100px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* Special Background Animation */
+@keyframes specialBackground {
+  0% {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Special Card Animation */
+@keyframes specialCard {
+  0% {
+    transform: translateX(-200px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* Animation Classes */
+.defaultBackground {
+  animation: defaultBackground 0.3s ease-in-out forwards;
+}
+
+.defaultCard {
+  animation: defaultCard 0.3s ease-out forwards;
+}
+
+.specialBackground {
+  @apply absolute inset-0 overflow-hidden h-dvh w-dvw;
+  animation: specialBackground 0.5s ease-in-out forwards;
+}
+
+.specialCard {
+  opacity: 0;
+  animation: specialCard 0.3s ease-in forwards;
+  animation-delay: 0.3s;
+}
