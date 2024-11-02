@@ -30,6 +30,7 @@ const UserDetails = React.memo(({ userDetails }: { userDetails: any }) => {
   const apiConfig = useApiConfig();
   const { contactInfoModel, personalInfoModel } = userDetails;
   const [occupation, setOccupation] = useState<any>("");
+  const [occupationDetails, setOccupationDetails] = useState<any>("");
   const [isLoading, setIsLoading] = useState(true);
   const [activeTab, setActiveTab] = useState("personal");
   const [tabs, setTabs] = useState<any>();
@@ -65,6 +66,8 @@ const UserDetails = React.memo(({ userDetails }: { userDetails: any }) => {
         const specialization = specializationListData.data.find((item: any) => item.specializationId === personalInfoModel.specializationId);
         const food = foodListData.data.find((item: any) => item.foodId === personalInfoModel.foodPreferencesId);
         setOccupation(occupation);
+        setOccupationDetails(occupationDetails);
+        console.log("occupationDetails: ", occupationDetails);
         const personalInfoExtended = {
           ...personalInfoModel,
           bloodGroup,
@@ -129,13 +132,15 @@ const UserDetails = React.memo(({ userDetails }: { userDetails: any }) => {
   }
 
   return (
-    <div className="right grid grid-cols-1 grid-rows-[15%_1fr] h-full w-full overflow-hidden">
+    <div className="right grid grid-cols-1 grid-rows-[18%_1fr] h-full w-full overflow-hidden">
       <Card className="w-full p-4 flex-[1_1_14%] rounded-none shadow-none border-none">
         <CardHeader className="flex p-0 items-start justify-between">
           <div className="basic-info flex flex-col items-start justify-start gap-2">
             <h1 className="text-lg lg:text-2xl font-bold flex flex-col items-start gap-1">
               {utility.getFullName(userDetails.personalInfoModel)}
-              <span className="text-primary font-semibold text-xs">{occupation?.occupationName}</span>
+              <span className="text-primary font-semibold text-xs">
+                {occupation?.occupationName} - {occupationDetails?.occupationDetailName}
+              </span>
             </h1>
             <div className="contact-information flex items-center justify-start gap-10">
               {contactInfoModel?.contactNumber && (
