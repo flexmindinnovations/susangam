@@ -67,7 +67,6 @@ const UserDetails = React.memo(({ userDetails }: { userDetails: any }) => {
         const food = foodListData.data.find((item: any) => item.foodId === personalInfoModel.foodPreferencesId);
         setOccupation(occupation);
         setOccupationDetails(occupationDetails);
-        console.log("occupationDetails: ", occupationDetails);
         const personalInfoExtended = {
           ...personalInfoModel,
           bloodGroup,
