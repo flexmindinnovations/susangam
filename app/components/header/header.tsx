@@ -23,7 +23,7 @@ import { useRouter } from "next/navigation";
 import { Link } from "@nextui-org/link";
 import { Button } from "@nextui-org/button";
 import { useAuth } from "@/app/context/authContext";
-import { Binoculars, BookHeart, FolderClock, LogOut, SquareUserRound } from "lucide-react";
+import { Binoculars, BookHeart, FolderClock, LogOut, SquareUserRound, UserIcon } from "lucide-react";
 import { timer } from "rxjs";
 
 const HeaderComponent = () => {
@@ -34,9 +34,10 @@ const HeaderComponent = () => {
   const { user, fetchUserDetails, logoutUser, isAuthenticated } = useAuth();
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
-  const [userInfo, setUserInfo] = useState({
+  const [userInfo, setUserInfo] = useState<any>({
     name: "User",
-    email: "user@email.com"
+    email: "user@email.com",
+    imageUrl: <UserIcon />
   });
   const router = useRouter();
   const dummyArray = Array.from({ length: 5 }, (_, i) => i + 1);
@@ -66,13 +67,22 @@ const HeaderComponent = () => {
       if (response) {
         await fetchUserDetails().then((_user: any) => {
           if (_user) {
-            const { personalInfoModel, contactInfoModel } = _user;
+            const { personalInfoModel, contactInfoModel, imageInfoModel } = _user;
             const { firstName, middleName, lastName } = personalInfoModel;
+            const hostUrl = process.env.NEXT_PUBLIC_API_URL?.replace("/api", "");
+            let image = '';
+            const images = [imageInfoModel.imagePath1, imageInfoModel.imagePath2]
+              .filter(Boolean)
+              .map((path) => `${hostUrl}/${path}`);
+            if (images.length > 0) {
+                image = images[0];
+            }
             const { emailId } = contactInfoModel;
             const fullName = firstName + " " + middleName + " " + lastName;
             setUserInfo({
               name: fullName,
-              email: emailId
+              email: emailId,
+              imageUrl: image
             });
           }
         });
@@ -212,7 +222,7 @@ const HeaderComponent = () => {
                   color="secondary"
                   name="Jason Hughes"
                   size="sm"
-                  src="https://i.pravatar.cc/150?u=a042581f4e29026704d"
+                  src={userInfo.imageUrl}
                 />
               </DropdownTrigger>
               <DropdownMenu aria-label="Profile Actions">

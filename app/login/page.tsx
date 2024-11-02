@@ -6,12 +6,12 @@ import { Link } from "@nextui-org/link";
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { useApiConfig } from "@/app/utility/apiConfig";
-import axios from "axios";
+import http from "@/app/utility/axios-instance";
 import toast from "react-hot-toast";
 import { usePathname, useRouter } from "next/navigation";
 import { useAuth } from "@/app/context/authContext";
 import { getAnimationConfig } from "@/app/animation-config";
-import styles from './login.module.css';
+import styles from "./login.module.css";
 
 const LoginPage = () => {
   const { register, handleSubmit, formState: { errors, isValid }, trigger } = useForm({ mode: "onChange" });
@@ -34,7 +34,7 @@ const LoginPage = () => {
       customerPassword: data["password"]
     };
     try {
-      const response = await axios.post(apiConfig.customer.login, payload);
+      const response = await http.post(apiConfig.customer.login, payload);
       const { data } = response;
       if (data) {
         const { customerResponse } = data;
@@ -93,7 +93,7 @@ const LoginPage = () => {
         className="overlay z-20 pl-20 flex items-center justify-start absolute top-0 bottom-0 h-auto w-full bg-gradient-to-tr from-ch-900/95 from-50% via-ch-500/70 via-90% to-ch-400/90">
         {/* Card with Slide-In Animation */}
         <div
-        className={`${styles.specialCard}`}
+          className={`${styles.specialCard}`}
         >
           <Card className="bg-transparent p-4 shadow-none min-w-96 !w-1/4">
             <CardHeader className="flex flex-col items-center justify-start gap-2">

@@ -3,11 +3,13 @@
 import { Card, CardHeader, Image, Skeleton } from "@nextui-org/react";
 import { useEffect, useState } from "react";
 import { Heart, SquareArrowOutUpRight, Star } from "lucide-react";
+import { useRouter } from "next/navigation";
 
 const ProfileCard = ({ data }: { data: any }) => {
   const [imagePath, setImagePath] = useState<string>();
   const [showModalOptions, setShowModalOptions] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
+  const router = useRouter();
 
   useEffect(() => {
     const defaultImagePath = "";
@@ -17,6 +19,11 @@ const ProfileCard = ({ data }: { data: any }) => {
     setImagePath(imageUrl);
     setIsLoading(false);
   }, [data]);
+
+  const handleLinkAction = () => {
+    const url = `/profile/${data.customerId}`;
+    router.push(url);
+  };
 
   if (isLoading) {
     return (
@@ -45,6 +52,7 @@ const ProfileCard = ({ data }: { data: any }) => {
               >
                 <IconComponent.type
                   key={index}
+                  onClick={handleLinkAction}
                   className={`w-5 h-5 ${IconComponent.type === Heart ? "text-red-500" : IconComponent.type === Star ? "text-yellow-400" : "text-blue-500"}`} />
               </div>
             ))
