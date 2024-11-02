@@ -1,5 +1,6 @@
 import React from 'react';
 import { Mail, Phone, MapPin } from 'lucide-react'; // Import the icons you need
+import Footer from '../components/footer/page'
 
 const domain = 'susangam';
 
@@ -36,7 +37,9 @@ const AboutPage: React.FC = () => {
           </div>
         </section>
       </main>
+      <Footer />
     </div>
+    
   );
 };
 
