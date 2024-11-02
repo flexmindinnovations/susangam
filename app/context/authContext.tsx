@@ -3,7 +3,7 @@ import React, { createContext, useContext, useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import { utility } from "@/app/utility/utils";
 import { useApiConfig } from "@/app/utility/apiConfig";
-import axios from "axios";
+import http from "@/app/utility/axios-instance";
 import toast from "react-hot-toast";
 
 interface AuthContextType {
@@ -33,7 +33,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     try {
       const user = JSON.parse(localStorage.getItem("user") || "{}");
       const getUserDetails = apiConfig.customer.getCustomerById(user.customerId) || "";
-      const response = await axios.get(getUserDetails);
+      const response = await http.get(getUserDetails);
       const { data } = response;
       if (data) {
         setUser(data);

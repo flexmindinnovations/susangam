@@ -5,7 +5,7 @@ import { useAuth } from "@/app/context/authContext";
 import { Skeleton } from "@nextui-org/react";
 import ProfileCard from "@/app/components/profile-card/profile-card";
 import { useApiConfig } from "@/app/utility/apiConfig";
-import axios from "axios";
+import http from "@/app/utility/axios-instance";
 
 const RegisteredMembers = () => {
   const [members, setMembers] = useState([]);
@@ -18,22 +18,21 @@ const RegisteredMembers = () => {
 
     const isSignedIn = async () => await isAuthenticated();
     isSignedIn().then((loggedIn) => {
-      console.log("loggedIn: ", loggedIn);
-      console.log("user: ", user);
-      if (loggedIn) {
-
-      } else {
+      // if (loggedIn) {
+      //
+      // } else {
         getRandomProfiles().then((data: any) => {
           if (data) setMembers(data);
         });
-      }
+      // }
     });
   }, []);
 
   const getRandomProfiles = async () => {
     try {
       const url = apiConfig.profile.getRandomProfiles;
-      const randomProfiles = await axios.get(url);
+      console.log('url: ', url);
+      const randomProfiles = await http.get(url);
       const { data } = randomProfiles;
       return data;
     } catch (error) {
