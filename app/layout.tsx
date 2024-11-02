@@ -10,6 +10,7 @@ import HeaderWrapper from "@/app/components/header/headerWrapper";
 import { ApiConfigProvider } from "@/app/utility/apiConfig";
 import { AuthProvider } from "@/app/context/authContext";
 import { Toaster } from 'react-hot-toast';
+import FooterWrapper from "./components/footer/footerWrapper";
 
 export const metadata: Metadata = {
   title: {
@@ -51,7 +52,8 @@ export default function RootLayout({
             <HeaderWrapper />
               <Toaster position={"top-center"} />
               {children}
-            </main>
+              <FooterWrapper/>
+            </main> 
           </div>
         </AuthProvider>
       </ApiConfigProvider>

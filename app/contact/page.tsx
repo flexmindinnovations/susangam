@@ -1,13 +1,12 @@
 import React from 'react';
-import { Mail, Phone, MapPin } from 'lucide-react'; // Import the icons you need
-import Footer from '../components/footer/page'
+import { utility } from "@/app/utility/utils";
+import { Mail, Phone, MapPin } from 'lucide-react'; 
 
-const domain = 'susangam';
 
-const AboutPage: React.FC = () => {
+const ContactPage : React.FC = () => {
   return (
     <div className="about-page">
-      <main className="content p-6">
+      <div className="content p-6">
         <section className="register">
           <div className="container py-10 flex flex-col items-center">
             <h1 className="h1-gradient text-3xl font-bold mb-4">Contact Us</h1>
@@ -30,17 +29,15 @@ const AboutPage: React.FC = () => {
                 <MapPin className="text-blue-500 mr-2" size={24} />
                 <p className="flex flex-col sm:flex-row">
                   <span className="address-label font-semibold">Address:</span>
-                  {` ${domain} Matrimonial Services, C/O - Cherry Spray School, Next to Welcome Hall, Kondhwa Khurd, Pune-411048`}
+                  {` ${utility.domain} Matrimonial Services, C/O - Cherry Spray School, Next to Welcome Hall, Kondhwa Khurd, Pune-411048`}
                 </p>
               </li>
             </ul>
           </div>
         </section>
-      </main>
-      <Footer />
+      </div>
     </div>
-    
   );
 };
 
-export default AboutPage;
+export default ContactPage;

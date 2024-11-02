@@ -1,5 +1,6 @@
 "use client";
 import React from 'react';
+import { Link } from "@nextui-org/link";
 import { Facebook, Twitter } from 'lucide-react';
 
 const Footer = () => {
@@ -7,6 +8,13 @@ const Footer = () => {
     // Handle the footer link click logic
     console.log(`${link} clicked`);
   };
+
+  const links = [
+    { label: 'Home', href: '/home' },
+    { label: 'About', href:'/about' },
+    { label: 'Contact', href:'./contact' },
+    { label: 'Blogs', href:'./blogs' },
+  ];
 
   return (
     <footer className="bg-gradient-to-b from-gray-800 to-gray-600 mt-5 w-full min-h-60 py-8">
@@ -20,18 +28,13 @@ const Footer = () => {
         </div>
         <div className="brand-links flex flex-col md:flex-row gap-4">
           <ul className="flex flex-col md:flex-row gap-4">
-            <li onClick={() => handleFooterLinkClick('home')} className="cursor-pointer text-white hover:underline">
-              <p>Home</p>
-            </li>
-            <li onClick={() => handleFooterLinkClick('about')} className="cursor-pointer text-white hover:underline">
-              <p>About</p>
-            </li>
-            <li onClick={() => handleFooterLinkClick('contact')} className="cursor-pointer text-white hover:underline">
-              <p>Contact</p>
-            </li>
-            <li onClick={() => handleFooterLinkClick('blogs')} className="cursor-pointer text-white hover:underline">
-              <p>Blogs</p>
-            </li>
+            {links.map((link, index) => (
+              <li key={index}>
+                  <Link href={link.href} className="cursor-pointer text-white hover:underline">
+                    <p>{link.label}</p>
+                  </Link>
+              </li>
+            ))}
           </ul>
         </div>
         <div className="_social_media_links">
