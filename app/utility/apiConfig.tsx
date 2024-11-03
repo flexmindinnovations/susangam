@@ -19,6 +19,7 @@ export type ApiConfigType = {
     state: (countryId: string | "") => string,
     country: string,
   },
+
   shared: {
     bloodGroup: string,
     getFoodPreferenceList: string,
@@ -30,6 +31,8 @@ export type ApiConfigType = {
     getEducationList: string,
     getSpecializationList: string,
     getSpecializationListByEducationId: (educationId: string | number) => string,
+    getSubCastList:string,
+    getCastList:string
   }
 };
 
@@ -63,6 +66,8 @@ export const ApiConfigProvider = ({ children }: { children: React.ReactNode }) =
       getHeightList: `/Height/getHeightList`,
       getEducationList: `/Education/GetEducationList`,
       getSpecializationList: `/Specialization/GetSpecializationList`,
+      getCastList:`/Cast/getCastList`,
+      getSubCastList:`/SubCast/getSubcastList`,
       getSpecializationListByEducationId: (educationId: string | number) => `/Education/GetSpecializationListByEducationId?educationId=${educationId}`
     }
   }), []);

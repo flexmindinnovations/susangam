@@ -1,11 +1,12 @@
 "use client";
 import React from 'react';
+import Image from 'next/image';
 import { Link } from "@nextui-org/link";
 import { Facebook, Twitter } from 'lucide-react';
+import logo from '../../../public/icon/logo_white.png';
 
 const Footer = () => {
   const handleFooterLinkClick = (link:any) => {
-    // Handle the footer link click logic
     console.log(`${link} clicked`);
   };
 
@@ -20,19 +21,19 @@ const Footer = () => {
     <footer className="bg-gradient-to-b from-gray-800 to-gray-600 mt-5 w-full min-h-60 py-8">
       <div className="footer-container mx-auto max-w-6xl flex flex-col md:flex-row justify-between items-center gap-8 px-4">
         <div className="logo flex items-center justify-center mb-4 md:mb-0">
-          <img
-            src="/assets/icon/logo_white.png"
-            className="h-16 w-24 md:h-24 md:w-32 object-fill"
+          <Image
+            src={logo}
             alt="brand"
+            className="h-16 w-24 md:h-24 md:w-32 object-fill"
           />
         </div>
         <div className="brand-links flex flex-col md:flex-row gap-4">
           <ul className="flex flex-col md:flex-row gap-4">
             {links.map((link, index) => (
               <li key={index}>
-                  <Link href={link.href} className="cursor-pointer text-white hover:underline">
-                    <p>{link.label}</p>
-                  </Link>
+                <Link href={link.href} className="cursor-pointer text-white hover:underline">
+                  <p>{link.label}</p>
+                </Link>
               </li>
             ))}
           </ul>

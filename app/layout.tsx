@@ -48,13 +48,88 @@ export default function RootLayout({
       <ApiConfigProvider>
         <AuthProvider>
           <div className="w-screen h-screen">
-            <main className="container mx-auto w-full h-[calc(100vh_-_72px)]">
+            <main className="container
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            w-full h-[calc(100vh_-_72px)]">
             <HeaderWrapper />
               <Toaster position={"top-center"} />
               {children}
               <FooterWrapper/>
             </main> 
-          </div>
+          </div>  
         </AuthProvider>
       </ApiConfigProvider>
     </Providers>

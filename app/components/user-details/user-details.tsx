@@ -28,7 +28,7 @@ interface TabItem<T> {
 
 const UserDetails = React.memo(({ userDetails }: { userDetails: any }) => {
   const apiConfig = useApiConfig();
-  const { contactInfoModel, personalInfoModel } = userDetails;
+  const { contactInfoModel, personalInfoModel,familyInfoModal } = userDetails;
   const [occupation, setOccupation] = useState<any>("");
   const [occupationDetails, setOccupationDetails] = useState<any>("");
   const [isLoading, setIsLoading] = useState(true);
@@ -45,11 +45,13 @@ const UserDetails = React.memo(({ userDetails }: { userDetails: any }) => {
           occupationDetailsData,
           educationListData,
           specializationListData,
-          foodListData
+          foodListData,
+          religionListData
         ] = await Promise.all([
           http.get(apiConfig.shared.bloodGroup),
           http.get(apiConfig.shared.getHeightList),
           http.get(apiConfig.shared.getOccupationList),
+          http.get(apiConfig.shared.getReligionList),
           http.get(apiConfig.shared.getOccupationById(personalInfoModel.occupationId)),
           http.get(apiConfig.shared.getEducationList),
           http.get(apiConfig.shared.getSpecializationList),
@@ -65,6 +67,8 @@ const UserDetails = React.memo(({ userDetails }: { userDetails: any }) => {
         const education = educationListData.data.find((item: any) => item.educationId === personalInfoModel.educationId);
         const specialization = specializationListData.data.find((item: any) => item.specializationId === personalInfoModel.specializationId);
         const food = foodListData.data.find((item: any) => item.foodId === personalInfoModel.foodPreferencesId);
+        const religion =religionListData.data.find((item:any)=>item.religionId === userDetails["familyInfoModal"]?.religionId);
+        console.log(religion);
         setOccupation(occupation);
         setOccupationDetails(occupationDetails);
         const personalInfoExtended = {
@@ -90,7 +94,7 @@ const UserDetails = React.memo(({ userDetails }: { userDetails: any }) => {
             title: "Family Information",
             icon: <UsersRound />,
             route: "family",
-            component: <FamilyInfo data={userDetails["familyInfoModel"]} />
+            component: <FamilyInfo familyInfo={userDetails["familyInfoModel"]} />
           },
           {
             key: "contact",
