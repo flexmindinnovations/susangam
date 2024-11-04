@@ -28,7 +28,7 @@ interface TabItem<T> {
 
 const UserDetails = React.memo(({ userDetails }: { userDetails: any }) => {
   const apiConfig = useApiConfig();
-  const { contactInfoModel, personalInfoModel,familyInfoModal } = userDetails;
+  const { contactInfoModel, personalInfoModel } = userDetails;
   const [occupation, setOccupation] = useState<any>("");
   const [occupationDetails, setOccupationDetails] = useState<any>("");
   const [isLoading, setIsLoading] = useState(true);
@@ -46,16 +46,28 @@ const UserDetails = React.memo(({ userDetails }: { userDetails: any }) => {
           educationListData,
           specializationListData,
           foodListData,
-          religionListData
+          religionListData,
+          castListData,
+          subCastListData,
+          countryListData,
+          stateListData,
+          cityListData,
+          motherTongueList
         ] = await Promise.all([
           http.get(apiConfig.shared.bloodGroup),
           http.get(apiConfig.shared.getHeightList),
           http.get(apiConfig.shared.getOccupationList),
-          http.get(apiConfig.shared.getReligionList),
           http.get(apiConfig.shared.getOccupationById(personalInfoModel.occupationId)),
           http.get(apiConfig.shared.getEducationList),
           http.get(apiConfig.shared.getSpecializationList),
-          http.get(apiConfig.shared.getFoodPreferenceList)
+          http.get(apiConfig.shared.getFoodPreferenceList),
+          http.get(apiConfig.shared.getReligionList),
+          http.get(apiConfig.shared.getCastList),
+          http.get(apiConfig.shared.getSubCastList(userDetails['familyInfoModel'].castId)),
+          http.get(apiConfig.location.country),
+          http.get(apiConfig.location.state(userDetails['contactInfoModel'].countryId)),
+          http.get(apiConfig.location.city(userDetails['contactInfoModel'].stateId)),
+          http.get(apiConfig.shared.getMotherTongueList),
         ]);
 
         // Finding necessary items from each response
@@ -67,8 +79,13 @@ const UserDetails = React.memo(({ userDetails }: { userDetails: any }) => {
         const education = educationListData.data.find((item: any) => item.educationId === personalInfoModel.educationId);
         const specialization = specializationListData.data.find((item: any) => item.specializationId === personalInfoModel.specializationId);
         const food = foodListData.data.find((item: any) => item.foodId === personalInfoModel.foodPreferencesId);
-        const religion =religionListData.data.find((item:any)=>item.religionId === userDetails["familyInfoModal"]?.religionId);
-        console.log(religion);
+        const religion = religionListData.data.find((item: any) => item.religionId === userDetails['familyInfoModel'].religionId);
+        const cast = castListData.data.find((item: any) => item.castId === userDetails['familyInfoModel'].castId);
+        const subCast = subCastListData.data.find((item: any) => item.subCastId === userDetails['familyInfoModel'].subCastId);
+        const country = countryListData.data.find((item: any) => item.countryId === userDetails['contactInfoModel'].countryId);
+        const state = stateListData.data.find((item: any) => item.stateId === userDetails['contactInfoModel'].stateId);
+        const city = cityListData.data.find((item: any) => item.cityId === userDetails['contactInfoModel'].cityId);
+        const motherTongue = motherTongueList.data.find((item: any) => item.motherTongueId === userDetails['otherInfoModel'].motherTongueId);
         setOccupation(occupation);
         setOccupationDetails(occupationDetails);
         const personalInfoExtended = {
@@ -81,6 +98,22 @@ const UserDetails = React.memo(({ userDetails }: { userDetails: any }) => {
           specialization,
           food
         };
+        const familyInfoExtended = {
+          ...userDetails["familyInfoModel"],
+          religion,
+          cast,
+          subCast
+        }
+        const contactInfoExtended = {
+          ...userDetails["contactInfoModel"],
+          country,
+          state,
+          city,
+        }
+        const otherInfoExtended = {
+          ...userDetails["otherInfoModel"],
+          motherTongue
+        }
         const _tabs = () => [
           {
             key: "personal",
@@ -94,21 +127,21 @@ const UserDetails = React.memo(({ userDetails }: { userDetails: any }) => {
             title: "Family Information",
             icon: <UsersRound />,
             route: "family",
-            component: <FamilyInfo familyInfo={userDetails["familyInfoModel"]} />
+            component: <FamilyInfo familyInfo={familyInfoExtended} />
           },
           {
             key: "contact",
             title: "Contact Information",
             icon: <BookUser />,
             route: "contact",
-            component: <ContactInfo data={userDetails["contactInfoModel"]} />
+            component: <ContactInfo contactInfo={contactInfoExtended} />
           },
           {
             key: "other",
             title: "Other Information",
             icon: <CircleEllipsis />,
             route: "other",
-            component: <OtherInfo data={userDetails["otherInfoModel"]} />
+            component: <OtherInfo otherInfo={otherInfoExtended} />
           }
         ];
         setTabs(_tabs);

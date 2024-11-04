@@ -6,15 +6,15 @@ import { Facebook, Twitter } from 'lucide-react';
 import logo from '../../../public/icon/logo_white.png';
 
 const Footer = () => {
-  const handleFooterLinkClick = (link:any) => {
+  const handleFooterLinkClick = (link: any) => {
     console.log(`${link} clicked`);
   };
 
   const links = [
     { label: 'Home', href: '/home' },
-    { label: 'About', href:'/about' },
-    { label: 'Contact', href:'./contact' },
-    { label: 'Blogs', href:'./blogs' },
+    { label: 'About', href: '/about' },
+    { label: 'Contact', href: './contact' },
+    // { label: 'Blog', href: './blog' },
   ];
 
   return (

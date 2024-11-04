@@ -1,19 +1,23 @@
 import React from "react";
 import { useApiConfig } from "@/app/utility/apiConfig";
-import { utility } from "@/app/utility/utils";
 
 const FamilyInfo = React.memo(({ familyInfo }: { familyInfo: any }) => {
   const apiConfig = useApiConfig();
-  const {rest} = familyInfo;
+  const {
+    religion,
+    cast,
+    subCast,
+    ...rest
+  } = familyInfo;
   if (familyInfo.hasOwnProperty("familyInfoId")) delete familyInfo.familyInfoId;
   const formatField = (key: string, value: string | any) => {
     switch (key) {
-      // case "castId":
-      //   return { label: "Cast", value: cast?.castName };
-      // case "subCastId":
-      //   return { label: "Sub Cast", value: subCast?.subCastName };
-      // case "religionId":
-      //   return { label: "Religion", value: religion?.religionName };
+      case "religionId":
+        return { label: "Religion", value: religion?.religionName };
+      case "castId":
+        return { label: "Cast", value: cast?.castName };
+      case "subCastId":
+        return { label: "Sub Cast", value: subCast?.subCastName };
       default:
         return { label: key.replace(/([A-Z])/g, " $1").replace(/^./, str => str.toUpperCase()), value };
     }
