@@ -31,8 +31,8 @@ export type ApiConfigType = {
     getEducationList: string,
     getSpecializationList: string,
     getSpecializationListByEducationId: (educationId: string | number) => string,
-    getSubCastList:string,
-    getCastList:string
+    getSubCastList: (castId: string | number) => string,
+    getCastList: string,
   }
 };
 
@@ -66,9 +66,9 @@ export const ApiConfigProvider = ({ children }: { children: React.ReactNode }) =
       getHeightList: `/Height/getHeightList`,
       getEducationList: `/Education/GetEducationList`,
       getSpecializationList: `/Specialization/GetSpecializationList`,
-      getCastList:`/Cast/getCastList`,
-      getSubCastList:`/SubCast/getSubcastList`,
-      getSpecializationListByEducationId: (educationId: string | number) => `/Education/GetSpecializationListByEducationId?educationId=${educationId}`
+      getCastList: `/Cast/GetCastList`,
+      getSubCastList: (castId: string | number) => `/Cast/GetSubCastListByCastId?castId=${castId}`,
+      getSpecializationListByEducationId: (educationId: string | number) => `/Education/GetSpecializationListByEducationId?educationId=${educationId}`,
     }
   }), []);
 

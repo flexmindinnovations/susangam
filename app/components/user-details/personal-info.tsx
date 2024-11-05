@@ -31,8 +31,8 @@ const PersonalInfo = React.memo(({ personalInfo }: { personalInfo: any }) => {
         return { label: "Occupation", value: occupation?.occupationName };
       case "occupationDetailId":
         return { label: "Occupation Detail", value: occupationDetails?.occupationDetailName };
-      case "bloodGroupId":
-        return { label: "Blood Group", value: bloodGroup?.bloodGroupName };
+      // case "bloodGroupId":
+      //   return { label: "Blood Group", value: bloodGroup?.bloodGroupName };
       case "dateOfBirth":
         return { label: "Birthday", value: new Date(value).toLocaleDateString() };
       case "timeOfBirth":

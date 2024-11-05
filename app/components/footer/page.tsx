@@ -6,19 +6,19 @@ import { Facebook, Twitter } from 'lucide-react';
 import logo from '../../../public/icon/logo_white.png';
 
 const Footer = () => {
-  const handleFooterLinkClick = (link:any) => {
+  const handleFooterLinkClick = (link: any) => {
     console.log(`${link} clicked`);
   };
 
   const links = [
     { label: 'Home', href: '/home' },
-    { label: 'About', href:'/about' },
-    { label: 'Contact', href:'./contact' },
-    { label: 'Blogs', href:'./blogs' },
+    { label: 'About', href: '/about' },
+    { label: 'Contact', href: './contact' },
+    // { label: 'Blog', href: './blog' },
   ];
 
   return (
-    <footer className="bg-gradient-to-b from-gray-800 to-gray-600 mt-5 w-full min-h-60 py-8">
+    <footer className="bg-gradient-to-b from-gray-800 to-gray-600 w-auto min-h-60 py-4">
       <div className="footer-container mx-auto max-w-6xl flex flex-col md:flex-row justify-between items-center gap-8 px-4">
         <div className="logo flex items-center justify-center mb-4 md:mb-0">
           <Image

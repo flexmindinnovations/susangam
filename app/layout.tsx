@@ -31,34 +31,34 @@ export const viewport: Viewport = {
 };
 
 export default function RootLayout({
-                                     children
-                                   }: {
+  children
+}: {
   children: React.ReactNode;
 }) {
   return (
     <html suppressHydrationWarning lang="en">
-    <head />
-    <body
-      className={clsx(
-        "min-h-screen bg-background font-sans antialiased",
-        fontSans.variable
-      )}
-    >
-    <Providers themeProps={{ attribute: "class", defaultTheme: "system" }}>
-      <ApiConfigProvider>
-        <AuthProvider>
-          <div className="w-screen h-screen">
-            <main className="container w-full h-[calc(100vh_-_72px)]">
-            <HeaderWrapper />
-              <Toaster position={"top-center"} />
-              {children}
-              <FooterWrapper/>
-            </main> 
-          </div>  
-        </AuthProvider>
-      </ApiConfigProvider>
-    </Providers>
-    </body>
+      <head />
+      <body
+        className={clsx(
+          "min-h-screen overflow-x-hidden bg-background font-sans antialiased",
+          fontSans.variable
+        )}
+      >
+        <Providers themeProps={{ attribute: "class", defaultTheme: "system" }}>
+          <ApiConfigProvider>
+            <AuthProvider>
+              <div className="w-full h-screen">
+                <main className="container mx-auto h-[calc(100vh_-_72px)]">
+                  <HeaderWrapper />
+                  <Toaster position={"top-center"} />
+                  {children}
+                  <FooterWrapper />
+                </main>
+              </div>
+            </AuthProvider>
+          </ApiConfigProvider>
+        </Providers>
+      </body>
     </html>
   );
 }

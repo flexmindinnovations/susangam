@@ -1,20 +1,38 @@
-.about-page {
-    background-color: #f8f9fa;
-    padding: 20px;
-  }
-  
+.contact-page {
+  background-color: #f8f9fa; /* Light background for the entire page */
+  min-height: 100vh; /* Ensures full height on the page */
+  padding: 2rem;
+}
+
+.h1-gradient {
+  background: linear-gradient(90deg, #6b5b95, #feb236);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.content, .location-container {
+  transition: all 0.3s ease; /* Smooth transition for hover effects */
+}
+
+.content:hover, .location-container:hover {
+  transform: scale(1.02); /* Slight scale on hover for interactivity */
+}
+
+ul {
+  list-style: none; /* Remove default list styles */
+  padding: 0; /* Remove default padding */
+}
+
+li {
+  padding: 10px 0; /* Vertical padding for list items */
+}
+
+@media (max-width: 768px) {
   .h1-gradient {
-    background: linear-gradient(90deg, #4e54c8, #8f94fb);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    font-size: 2rem; /* Smaller font on mobile */
   }
-  
-  .email-label, .contact-label, .address-label {
-    font-weight: bold;
+
+  .content, .location-container {
+    padding: 1rem; /* Less padding on smaller screens */
   }
-  
-  .container {
-    max-width: 800px;
-    margin: 0 auto;
-  }
-  
+}
