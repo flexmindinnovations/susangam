@@ -1,0 +1,23 @@
+.btn-primary {
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    font-weight: bold;
+    color: white;
+    background: linear-gradient(45deg, #ff6bcb, #845ef7);
+    border-radius: 8px;
+    transition: background 0.3s ease;
+  }
+  
+  .btn-primary:hover {
+    background: linear-gradient(45deg, #845ef7, #ff6bcb);
+  }
+  
+  .card {
+    border-radius: 12px;
+    transition: box-shadow 0.3s ease;
+  }
+  
+  .card:hover {
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  }
+  
