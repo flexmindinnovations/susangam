@@ -33,6 +33,9 @@ export type ApiConfigType = {
     getSpecializationListByEducationId: (educationId: string | number) => string,
     getSubCastList: (castId: string | number) => string,
     getCastList: string,
+  },
+  blog:{
+    blogList:string,
   }
 };
 
@@ -69,6 +72,9 @@ export const ApiConfigProvider = ({ children }: { children: React.ReactNode }) =
       getCastList: `/Cast/GetCastList`,
       getSubCastList: (castId: string | number) => `/Cast/GetSubCastListByCastId?castId=${castId}`,
       getSpecializationListByEducationId: (educationId: string | number) => `/Education/GetSpecializationListByEducationId?educationId=${educationId}`,
+    },
+    blog:{
+      blogList:`/Blog/getBlogList`,
     }
   }), []);
 
