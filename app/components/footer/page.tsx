@@ -19,7 +19,7 @@ const Footer = () => {
 
   return (
     <footer className="bg-gradient-to-br from-purple-800 via-indigo-700 to-blue-900 w-auto min-h-60 py-6 transition-all duration-500 ease-in-out hover:bg-gradient-to-br hover:from-blue-900 hover:via-indigo-800 hover:to-purple-800">
-      <div className="footer-container mx-auto max-w-6xl flex flex-col md:flex-row justify-between items-center gap-8 px-4">
+      <div className="footer-container mx-auto max-w-6xl flex flex-col md:flex-row justify-between items-center gap-4 md:gap-8 px-4">
         {/* Logo Section */}
         <div className="logo flex items-center justify-center mb-4 md:mb-0 w-full md:w-auto">
           <Image
@@ -70,7 +70,7 @@ const Footer = () => {
       </div>
 
       {/* Terms & Conditions, Privacy Policy, Refund Policy */}
-      <div className="_terms py-1 w-full px-1 mt-4 justify-center">
+      <div className="_terms py-1 w-full px-1 mt-4 justify-center text-center">
         <ul className="flex flex-col md:flex-row gap-4 justify-center">
           <li onClick={() => handleFooterLinkClick('termsAndConditions')} className="cursor-pointer text-white hover:text-gray-300 hover:underline transition">
             <p>Terms & Conditions</p>
