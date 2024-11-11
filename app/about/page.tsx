@@ -60,22 +60,21 @@ const AboutUs: React.FC<AboutUsProps> = () => {
 
                 {/* Content */}
                 <section className="relative z-10 flex flex-col items-center justify-center text-center h-full py-16 px-6 lg:px-10">
-                    <h1 className="text-2xl lg:text-5xl font-semibold md:font-extrabold text-blue-700 mb-2 sm:mb-6">
+                    <h2 className="font-bold m-0 text-sm text-center md:text-xl lg:text-2xl text-white">
                         Welcome to {utility.domain}.com
-                    </h1>
-                    <p className="mt-4 text-sm md:text-lg text-gray-400 leading-relaxed max-w-3xl md:max-w-5xl sm:text-base sm:mt-2 sm:px-4">
+                    </h2>
+                    <p className="mt-4 text-sm md:text-lg text-gray-200 leading-relaxed max-w-3xl md:max-w-5xl sm:text-base sm:mt-2 sm:px-4">
                         At {utility.domain}.com, we believe in the power of love transcending boundaries, cultures, and religions. Our
                         mission is to help people find their perfect life partners, regardless of their religious background. We aim
                         to create a platform that respects and celebrates the diversity of our users while upholding the values of
                         unity, understanding, and mutual respect.
                     </p>
-                    <p className="mt-4 text-sm md:text-lg text-gray-400 leading-relaxed  max-w-3xl md:max-w-5xl sm:text-base sm:mt-2 sm:px-4">
+                    <p className="mt-4 text-sm md:text-lg text-gray-200 leading-relaxed max-w-3xl md:max-w-5xl sm:text-base sm:mt-2 sm:px-4">
                         To guide us in our mission, we are privileged to have a dedicated advisory board comprising individuals of
                         high repute and diverse backgrounds. Each member brings a wealth of knowledge, experience, and a commitment
                         to fostering harmony within our multi-religious community. Their insights and expertise are instrumental in
                         shaping our services and ensuring that we remain true to our core values of inclusivity and compassion.
                     </p>
-
                     <div className="mt-8 flex flex-col sm:flex-row sm:justify-center gap-6 sm:gap-4">
                         {isLoggedIn ? (
                             <Button color="primary" variant="shadow" onClick={handleExploreProfiles}>

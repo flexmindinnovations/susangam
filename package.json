@@ -25,6 +25,7 @@
 		"@react-aria/ssr": "3.9.4",
 		"@react-aria/visually-hidden": "3.8.12",
 		"@react-google-maps/api": "^2.20.3",
+		"@vis.gl/react-google-maps": "^1.4.0",
 		"axios": "^1.7.7",
 		"clsx": "2.1.1",
 		"firebase": "^11.0.1",
