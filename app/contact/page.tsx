@@ -1,8 +1,9 @@
+
+"use client"
 import React from 'react';
 import { utility } from "@/app/utility/utils";
 import { Mail, Phone, MapPin } from 'lucide-react'; 
-import LocationLocator from '@/app/components/location/page';
-import MapComponent from '@/app/components/location/page';
+import LocationLocatorMap from '@/app/components/location/location';
 
 const ContactPage: React.FC = () => {
   return (
@@ -38,7 +39,7 @@ const ContactPage: React.FC = () => {
         </section>
       </div>
       <div className="location-container w-full lg:w-1/2 bg-gray-100 p-6 rounded-lg shadow-lg">
-        <MapComponent/>
+      <LocationLocatorMap />
       </div>
     </div>
   );
